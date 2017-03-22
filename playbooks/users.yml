@@ -1,0 +1,30 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Create Local Administrator
+      user:
+        name: ladmin
+        comment: "Local Admin"
+        uid: 1000
+        password: $1$salt$R/cwcKyTA1TUFFnFfsgjD.
+
+- hosts: web
+  remote_user: root
+  tasks:
+    - name: Create Web Administrator
+      user:
+        name: webadmin
+        comment: "Web Administrator"
+        uid: 2000
+        password: $1$salt$R/cwcKyTA1TUFFnFfsgjD.
+
+- hosts: db
+  remote_user: root
+  tasks:
+    - name: Create DB Administrator
+      user:
+        name: dbadmin
+        comment: "DB Administrator"
+        uid: 2001
+        password: $1$salt$R/cwcKyTA1TUFFnFfsgjD.

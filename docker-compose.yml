@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+    container_name: db01
+    build: .
+    networks:
+      mynet:
+        ipv4_address: 10.0.0.11
+  web:
+    container_name: web01
+    build: .
+    networks:
+      mynet:
+        ipv4_address: 10.0.0.21
+
+networks:
+  mynet:
+    driver: bridge
+    ipam: 
+      config:
+      - subnet: 10.0.0.0/24
